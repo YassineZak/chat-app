@@ -1,6 +1,7 @@
 import express from 'express';
 import http from 'http';
 import socketio from 'socket.io';
+import cors from 'cors';
 import router from './router.js';
 import { addUser, getUser, removeUser, getUsersInRoom } from './users.js';
 
@@ -11,6 +12,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 app.use(router);
+app.use(cors());
 
 io.on('connection', (socket) => {
 
