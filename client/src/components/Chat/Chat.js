@@ -16,7 +16,7 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([]);
-    const ENDPOINT = 'localhost:5000';
+    const ENDPOINT = 'localhost:8002';
 
     useEffect(() => {
          
