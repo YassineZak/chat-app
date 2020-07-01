@@ -7,6 +7,7 @@ const Join = () => {
 
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+    
 
     const handleNameInput = (event) => {
         setName(event.target.value.trim())
@@ -17,6 +18,9 @@ const Join = () => {
     const handleSubmit = (event) => {
         if (!name || !room){
             event.preventDefault();
+        }
+        else{
+            localStorage.setItem('isAuthenticated', true);
         }
     } 
 

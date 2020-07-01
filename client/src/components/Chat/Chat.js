@@ -19,7 +19,7 @@ const Chat = ({ location }) => {
     const ENDPOINT = 'localhost:8002';
 
     useEffect(() => {
-         
+        
         const { name, room } = querystring.parse(location.search);
 
         socket = io(ENDPOINT);
@@ -46,11 +46,17 @@ const Chat = ({ location }) => {
         socket.on('message', (message) => {
             setMessages([...messages, message]);
         })
-    }, [messages]);
+        socket.on('messages', (messages)=>{
+            // eslint-disable-next-line
+            messages.map((message)=> {
+                setMessages([...messages, message]);
+            });
+            
+        })
+    }, [message, messages]);
 
     const sendMessage = (event) => {
         event.preventDefault();
-
         if (message){
             socket.emit('sendMessage', message, () => setMessage(''));
         }
